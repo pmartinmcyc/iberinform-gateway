@@ -87,7 +87,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/lang"
           }
         } ],
         "responses" : {
@@ -97,7 +97,8 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/countriesList"
-                }
+                },
+                "example" : "{   \"countries\": [     {       \"id\": \"ESP\",       \"name\": \"Spain\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/ESP\"         }, \t\t{           \"rel\": \"parent\",           \"href\": \"https://api.hostdomain.com/v1/countries\"         }, \t\t{ \t\t  \"rel\": \"providers\", \t\t  \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\" \t\t}       ]     }, \t{       \"id\": \"PER\",       \"name\": \"Peru\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/PER\"         }, \t\t{           \"rel\": \"parent\",           \"href\": \"https://api.hostdomain.com/v1/countries\"         }, \t\t{ \t\t  \"rel\": \"providers\", \t\t  \"href\": \"https://api.hostdomain.com/v1/countries/PER/providers\" \t\t}       ]     }   ] }"
               }
             }
           },
@@ -146,7 +147,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/lang"
           }
         } ],
         "responses" : {
@@ -155,8 +156,9 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/linksList"
-                }
+                  "$ref" : "#/components/schemas/country"
+                },
+                "example" : "{   \"id\": \"ESP\",   \"name\": \"Spain\",   \"links\": [ \t{ \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/countries/ESP\" \t}, \t{ \t  \"rel\": \"parent\", \t  \"href\": \"https://api.hostdomain.com/v1/countries\" \t}, \t{ \t  \"rel\": \"providers\", \t  \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\" \t}   ]     }"
               }
             }
           },
@@ -205,7 +207,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/lang"
           }
         } ],
         "responses" : {
@@ -214,11 +216,9 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/provider"
-                  }
-                }
+                  "$ref" : "#/components/schemas/inline_response_200"
+                },
+                "example" : "{   \"providers\": [     {       \"providerId\": \"IBER\",       \"countryId\": \"ESP\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers/IBER\"         }       ]     }   ],   \"links\": [     {       \"rel\": \"self\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\"     }, \t{       \"rel\": \"parent\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP\"     }   ] } "
               }
             }
           },
@@ -277,7 +277,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/lang"
           }
         } ],
         "responses" : {
@@ -286,11 +286,9 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/providerSearchCriteria"
-                  }
-                }
+                  "$ref" : "#/components/schemas/providerDetails"
+                },
+                "example" : "{   \"countryId\": \"ESP\",   \"providerId\": \"IBER\",   \"name\": \"Iberinform\",   \"organisationIdTypes\": [     {       \"organisationIdType\": \"IBER\"     }   ],   \"searchCriteria\": [     {       \"paramName\": \"name\",       \"optional\": false,       \"minLength\": 2,       \"allowedValues\": [         \"MatchBeginning\",\"ClosestKeywords\",\"ExactValue\"       ]     }, \t{ \t  \"paramName\": \"regOffice\",       \"optional\": true,       \"validationRegExp\": \"[A-Z][0-9]{8}|[0-9]{8}[A-Z]|[A-Z][0-9]{7}[A-Z]\" \t}, \t{ \t  \"paramName\": \"regOfficeType\",       \"optional\": true,       \"allowedValues\": [         \"NREG\"       ] \t}   ],   \"availableReports\": [     {       \"reportID\": 1,       \"name\": \"IBERPLUS\",       \"description\": \"Informe Iberplus\"     }, \t{       \"reportID\": 2,       \"name\": \"INVESTIGADO\",       \"description\": \"Informe Investigado\"     }   ],   \"links\": [     {       \"rel\": \"self\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers/IBER\"     } , \t{       \"rel\": \"parent\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\"     }   ] }"
               }
             }
           },
@@ -342,9 +340,9 @@
             "type" : "string"
           }
         }, {
-          "name" : "matchType",
+          "name" : "providerId",
           "in" : "query",
-          "description" : "match type of the search",
+          "description" : "providerId for search organisations",
           "required" : true,
           "style" : "form",
           "explode" : true,
@@ -352,9 +350,9 @@
             "type" : "string"
           }
         }, {
-          "name" : "nreg",
+          "name" : "matchTypename",
           "in" : "query",
-          "description" : "nreg of the organisation",
+          "description" : "Machtype of the search the organisation by name",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -362,9 +360,19 @@
             "type" : "string"
           }
         }, {
-          "name" : "vat",
+          "name" : "regOffice",
           "in" : "query",
-          "description" : "vat of the organisation",
+          "description" : "registered office code of the organisation, as local",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "regOfficeType",
+          "in" : "query",
+          "description" : "registered office type of the organisation, as local",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -399,7 +407,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/lang"
           }
         } ],
         "responses" : {
@@ -409,7 +417,8 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/organisationsList"
-                }
+                },
+                "example" : "{   \"totalRecords\": 1,   \"organisations\": [     {       \"providerId\": \"IBER\",       \"orgIdent\": {         \"organisationIdType\": \"IBER\",         \"organisationId\": \"1261947\"       },       \"name\": \"Atradius Credito y Caucion\",       \"registeredOfficesList\": [         {           \"registeredOfficeType\": \"NREG\",           \"registeredOfficeCode\": \"B92566553\"         }       ],       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/organisations/1261947?countryId=ESP&organisationIdType=IBER\"         }       ]     }   ] }"
               }
             }
           },
@@ -461,7 +470,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "idType",
+          "name" : "organisationIdType",
           "in" : "query",
           "description" : "type of the Id of the organisation",
           "required" : true,
@@ -478,7 +487,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/lang"
           }
         } ],
         "responses" : {
@@ -487,8 +496,9 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/organisation"
-                }
+                  "$ref" : "#/components/schemas/organisationDetails"
+                },
+                "example" : "{   \"orgIdent\": {     \"organisationIdType\": \"IBER\",     \"organisationId\": \"1261947\"   },   \"name\": \"Atradius Credito y Caucion\",   \"address\": {     \"addressType\": \"Paseo\",     \"street\": \"Paseo Castellana 4\",     \"city\": \"Madrid\",     \"postCode\": \"28026\",     \"countrySubident\": [       \"MB\"     ],     \"country\": \"ESP\"   },   \"registeredOfficesList\": [     {       \"registeredOfficeType\": \"NREG\",       \"registeredOfficeCode\": \"B92566553\"     }   ],   \"providerId\": \"string\",   \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/organisations/1261947?countryId=ESP&organisationIdType=IBER\"         }       ] }"
               }
             }
           },
@@ -520,34 +530,34 @@
         "description" : "Returns an array of orders",
         "operationId" : "getOrders",
         "parameters" : [ {
-          "name" : "countryId",
-          "in" : "query",
-          "description" : "Id of country",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
           "name" : "status",
           "in" : "query",
           "description" : "status of the order to search",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "lang",
-          "in" : "query",
-          "description" : "language",
           "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
             "type" : "string"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "limit",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "offset",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
           }
         } ],
         "responses" : {
@@ -556,11 +566,9 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/orderResponse"
-                  }
-                }
+                  "$ref" : "#/components/schemas/ordersList"
+                },
+                "example" : "{   \"totalRecords\": 1,   \"orders\": [   {   \"id\": \"uuid\",   \"status\": \"pending\",   \"reports\": [   { \t\"orderId\": \"uuid\", \t\"countryId\": \"ESP\", \t\"providerId\": \"IBER\", \t\"organisationIdType\": \"1261947\", \t\"organisationId\": \"IBER\", \t\"status\": \"pending\", \t\"link\": { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/reports/uuid\" \t}   }   ],   \"links\": [     { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/orders/uuid\"     }     ]   } ] }"
               }
             }
           },
@@ -594,7 +602,8 @@
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/orderRequest"
-              }
+              },
+              "example" : "{   \"reports\": [     {       \"countryId\": \"ESP\",       \"providerId\": \"IBER\",       \"organisationIdType\": \"IBER\",       \"organisationId\": \"1261947\",       \"reportTypeId\": \"IBERPLUS\"     }   ],   \"callback\": {     \"data\": \"string\",     \"type\": \"string\"   } }"
             }
           },
           "required" : true
@@ -605,11 +614,68 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/orderResponse"
-                  }
-                }
+                  "$ref" : "#/components/schemas/orderDetails"
+                },
+                "example" : "{ \"id\": \"uuid\", \"status\": \"pending\", \"reports\": [   { \t\"orderId\": \"uuid\", \t\"countryId\": \"ESP\", \t\"providerId\": \"IBER\", \t\"organisationIdType\": \"1261947\", \t\"organisationId\": \"IBER\", \t\"status\": \"pending\", \t\"link\": { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/reports/uuid\" \t}   } ], \"links\": [   { \t\"rel\": \"self\", \t\"href\": \"https://api.hostdomain.com/v1/orders/uuid\"   } ] }"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          },
+          "401" : {
+            "description" : "authentication failed"
+          },
+          "403" : {
+            "description" : "forbidden"
+          },
+          "404" : {
+            "description" : "not found"
+          },
+          "500" : {
+            "description" : "internal server error"
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/v1/orders/{orderId}" : {
+      "get" : {
+        "tags" : [ "orders" ],
+        "summary" : "Return individual order information",
+        "operationId" : "getOrderById",
+        "parameters" : [ {
+          "name" : "orderId",
+          "in" : "path",
+          "description" : "Id of order",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "lang",
+          "in" : "query",
+          "description" : "language",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/lang"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/orderDetails"
+                },
+                "example" : "{   \"id\": \"uuid\",   \"status\": \"pending\",   \"reports\": [   { \t\"orderId\": \"uuid\", \t\"countryId\": \"ESP\", \t\"providerId\": \"IBER\", \t\"organisationIdType\": \"1261947\", \t\"organisationId\": \"IBER\", \t\"status\": \"pending\", \t\"link\": { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/reports/uuid\" \t}   }   ],   \"links\": [     { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/orders/uuid\"     }     ]   }"
               }
             }
           },
@@ -644,7 +710,7 @@
           "name" : "orderId",
           "in" : "query",
           "description" : "Id of order",
-          "required" : true,
+          "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
@@ -654,7 +720,7 @@
           "name" : "countryId",
           "in" : "query",
           "description" : "Id of country",
-          "required" : true,
+          "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
@@ -664,21 +730,31 @@
           "name" : "status",
           "in" : "query",
           "description" : "status of the reports to search",
-          "required" : true,
+          "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
             "type" : "string"
           }
         }, {
-          "name" : "lang",
+          "name" : "limit",
           "in" : "query",
-          "description" : "language",
+          "description" : "limit",
           "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string"
+            "type" : "integer"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "offset",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer"
           }
         } ],
         "responses" : {
@@ -687,10 +763,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/reportResponse"
-                  }
+                  "$ref" : "#/components/schemas/reportsList"
                 }
               }
             }
@@ -723,32 +796,12 @@
         "description" : "Returns a single report",
         "operationId" : "getReportById",
         "parameters" : [ {
-          "name" : "orderId",
-          "in" : "query",
-          "description" : "Id of order",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
           "name" : "reportId",
           "in" : "path",
           "description" : "id of report",
           "required" : true,
           "style" : "simple",
           "explode" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "lang",
-          "in" : "query",
-          "description" : "language",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
           "schema" : {
             "type" : "string"
           }
@@ -759,7 +812,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/report"
                 }
               }
             }
@@ -795,7 +848,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "type" : "object"
+                "$ref" : "#/components/schemas/loginRequest"
               }
             }
           },
@@ -807,7 +860,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/loginResponse"
                 }
               }
             }
@@ -836,132 +889,17 @@
   },
   "components" : {
     "schemas" : {
-      "country" : {
-        "required" : [ "id", "link", "name" ],
+      "activityData" : {
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "example" : "ESP"
-          },
-          "name" : {
-            "type" : "string",
-            "example" : "Spain"
-          },
-          "links" : {
-            "$ref" : "#/components/schemas/linksList"
-          }
-        }
-      },
-      "countriesList" : {
-        "type" : "object",
-        "properties" : {
-          "countries" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/country"
-            }
-          },
-          "links" : {
-            "$ref" : "#/components/schemas/linksList"
-          }
-        }
-      },
-      "idTypes" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/idTypes_inner"
-        }
-      },
-      "criteriaSet" : {
-        "type" : "object",
-        "properties" : {
-          "paramName" : {
+          "activityCode" : {
             "type" : "string"
           },
-          "optional" : {
-            "type" : "boolean"
+          "activityCodeType" : {
+            "type" : "string"
           },
-          "minLength" : {
-            "type" : "integer",
-            "format" : "int32",
-            "nullable" : true
-          },
-          "maxLength" : {
-            "type" : "integer",
-            "format" : "int32",
-            "nullable" : true
-          },
-          "validationRegExp" : {
-            "type" : "string",
-            "nullable" : true
-          },
-          "allowedValues" : {
-            "type" : "array",
-            "items" : {
-              "type" : "string"
-            }
-          },
-          "links" : {
-            "$ref" : "#/components/schemas/linksList"
-          }
-        }
-      },
-      "searchCriteria" : {
-        "type" : "object",
-        "properties" : {
-          "criteriaSet" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/criteriaSet"
-            }
-          }
-        }
-      },
-      "providerSearchCriteria" : {
-        "required" : [ "id", "idTypes", "name", "searchCriteria" ],
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "example" : "ESP"
-          },
-          "name" : {
-            "type" : "string",
-            "example" : "Spain"
-          },
-          "idTypes" : {
-            "$ref" : "#/components/schemas/idTypes"
-          },
-          "searchCriteria" : {
-            "$ref" : "#/components/schemas/searchCriteria"
-          }
-        }
-      },
-      "organisationsList" : {
-        "type" : "object",
-        "properties" : {
-          "organisations" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/organisation"
-            }
-          },
-          "links" : {
-            "$ref" : "#/components/schemas/linksList"
-          }
-        }
-      },
-      "orgIdent" : {
-        "type" : "object",
-        "properties" : {
-          "idType" : {
-            "type" : "string",
-            "example" : "CSAF"
-          },
-          "id" : {
-            "type" : "string",
-            "example" : "C123"
+          "description" : {
+            "type" : "string"
           }
         }
       },
@@ -997,26 +935,376 @@
           }
         }
       },
-      "registeredOffice" : {
+      "aditionalCompanyData" : {
         "type" : "object",
         "properties" : {
-          "registeredOfficeType" : {
-            "type" : "string",
-            "example" : "NREG"
+          "employeesData" : {
+            "$ref" : "#/components/schemas/employeesData"
           },
-          "registeredOfficeCode" : {
-            "type" : "string",
-            "example" : "A123"
+          "companySize" : {
+            "type" : "string"
+          },
+          "nominalShareCapital" : {
+            "$ref" : "#/components/schemas/amountData"
+          },
+          "issuedShareCapital" : {
+            "$ref" : "#/components/schemas/amountData"
           }
         }
       },
-      "registeredOfficesList" : {
+      "amountData" : {
+        "type" : "object",
+        "properties" : {
+          "amount" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "currency" : {
+            "type" : "string"
+          }
+        }
+      },
+      "availableReport" : {
+        "type" : "object",
+        "properties" : {
+          "reportID" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 1
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "IBERPLUS"
+          },
+          "description" : {
+            "type" : "string",
+            "example" : "Informe Iberplus"
+          }
+        }
+      },
+      "clientsProvidersData" : {
+        "type" : "object"
+      },
+      "callbackRequest" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      },
+      "corporateBodiesData" : {
+        "type" : "object"
+      },
+      "countriesList" : {
+        "type" : "object",
+        "properties" : {
+          "countries" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/country"
+            }
+          }
+        }
+      },
+      "country" : {
+        "required" : [ "id", "link", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "example" : "ESP"
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Spain"
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/linksList"
+          }
+        }
+      },
+      "criteriaSet" : {
+        "type" : "object",
+        "properties" : {
+          "paramName" : {
+            "type" : "string"
+          },
+          "optional" : {
+            "type" : "boolean"
+          },
+          "minLength" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "maxLength" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "validationRegExp" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "allowedValues" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "employeesData" : {
+        "type" : "object",
+        "properties" : {
+          "year" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "employeesByFinancialYear" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/employeesFinancialYearData"
+            }
+          }
+        }
+      },
+      "employeesFinancialYearData" : {
+        "type" : "object",
+        "properties" : {
+          "employeesNumber" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "gender" : {
+            "type" : "string"
+          },
+          "situation" : {
+            "type" : "string"
+          }
+        }
+      },
+      "evaluationData" : {
+        "type" : "object",
+        "properties" : {
+          "solvency" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "delinquency" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "creditOpinion" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "financialBalanceSheets" : {
+        "type" : "object"
+      },
+      "financialConnectionsData" : {
+        "type" : "object"
+      },
+      "financialRatiosData" : {
+        "type" : "object"
+      },
+      "financialStatement" : {
+        "type" : "object",
+        "properties" : {
+          "yearEndDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "statements" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/statement"
+            }
+          }
+        }
+      },
+      "financialStatementsData" : {
         "type" : "array",
         "items" : {
-          "$ref" : "#/components/schemas/registeredOffice"
+          "$ref" : "#/components/schemas/financialStatement"
+        }
+      },
+      "identifyingData" : {
+        "type" : "object",
+        "properties" : {
+          "registeredOffice" : {
+            "$ref" : "#/components/schemas/registeredOffice"
+          },
+          "legalForm" : {
+            "type" : "string"
+          },
+          "tradingName" : {
+            "type" : "string"
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/address"
+          },
+          "phoneNumber" : {
+            "type" : "string"
+          },
+          "faxNumber" : {
+            "type" : "string"
+          },
+          "website" : {
+            "type" : "string"
+          },
+          "mainActivity" : {
+            "$ref" : "#/components/schemas/activityData"
+          },
+          "otherActivities" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/activityData"
+            }
+          },
+          "startDate" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }
+      },
+      "incidentsData" : {
+        "type" : "object"
+      },
+      "lang" : {
+        "type" : "string",
+        "enum" : [ "ES", "EN" ]
+      },
+      "linksList" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/link"
+        }
+      },
+      "link" : {
+        "type" : "object",
+        "properties" : {
+          "rel" : {
+            "type" : "string",
+            "example" : "self"
+          },
+          "href" : {
+            "type" : "string",
+            "example" : "https://server.domain/api/self"
+          }
+        }
+      },
+      "loginResponse" : {
+        "type" : "object",
+        "properties" : {
+          "token" : {
+            "type" : "string"
+          },
+          "message" : {
+            "$ref" : "#/components/schemas/loginResponse_message"
+          },
+          "status" : {
+            "type" : "string"
+          },
+          "userInfo" : {
+            "$ref" : "#/components/schemas/loginResponse_userInfo"
+          }
+        }
+      },
+      "loginRequest" : {
+        "type" : "object",
+        "properties" : {
+          "user" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          }
+        }
+      },
+      "officialRegistrationData" : {
+        "type" : "object"
+      },
+      "orderDetails" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "example" : "uuid"
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "pending"
+          },
+          "reports" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/reportDetails"
+            }
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/linksList"
+          }
+        }
+      },
+      "ordersList" : {
+        "type" : "object",
+        "properties" : {
+          "totalRecords" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "orders" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/orderDetails"
+            }
+          }
+        }
+      },
+      "orderRequest" : {
+        "type" : "object",
+        "properties" : {
+          "reports" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/reportRequest"
+            }
+          },
+          "callback" : {
+            "$ref" : "#/components/schemas/callbackRequest"
+          }
         }
       },
       "organisation" : {
+        "type" : "object",
+        "properties" : {
+          "providerId" : {
+            "type" : "string",
+            "example" : "IBER"
+          },
+          "orgIdent" : {
+            "$ref" : "#/components/schemas/orgIdent"
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Atradius Credito y Caucion"
+          },
+          "registeredOfficesList" : {
+            "$ref" : "#/components/schemas/registeredOfficesList"
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/linksList"
+          }
+        }
+      },
+      "organisationDetails" : {
         "type" : "object",
         "properties" : {
           "orgIdent" : {
@@ -1040,107 +1328,37 @@
           }
         }
       },
-      "link" : {
-        "type" : "object",
-        "properties" : {
-          "rel" : {
-            "type" : "string",
-            "example" : "self"
-          },
-          "href" : {
-            "type" : "string",
-            "example" : "https://server.domain/api/self"
-          }
-        }
-      },
-      "linksList" : {
+      "organisationIdTypes" : {
         "type" : "array",
         "items" : {
-          "$ref" : "#/components/schemas/link"
+          "$ref" : "#/components/schemas/organisationIdTypes_inner"
         }
       },
-      "reportRequest" : {
+      "organisationsList" : {
         "type" : "object",
         "properties" : {
-          "countryId" : {
-            "type" : "string",
-            "example" : "ESP"
+          "totalRecords" : {
+            "type" : "integer",
+            "format" : "int32"
           },
-          "providerId" : {
+          "organisations" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/organisation"
+            }
+          }
+        }
+      },
+      "orgIdent" : {
+        "type" : "object",
+        "properties" : {
+          "organisationIdType" : {
             "type" : "string",
             "example" : "IBER"
           },
           "organisationId" : {
             "type" : "string",
-            "example" : "12345678"
-          }
-        }
-      },
-      "reportResponse" : {
-        "type" : "object",
-        "properties" : {
-          "countryId" : {
-            "type" : "string",
-            "example" : "ESP"
-          },
-          "providerId" : {
-            "type" : "string",
-            "example" : "IBER"
-          },
-          "organisationId" : {
-            "type" : "string",
-            "example" : "12345678"
-          },
-          "status" : {
-            "type" : "string",
-            "example" : "pending"
-          },
-          "link" : {
-            "$ref" : "#/components/schemas/link"
-          }
-        }
-      },
-      "callbackRequest" : {
-        "type" : "object",
-        "properties" : {
-          "data" : {
-            "type" : "string"
-          },
-          "type" : {
-            "type" : "string"
-          }
-        }
-      },
-      "orderResponse" : {
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "example" : "uuid"
-          },
-          "status" : {
-            "type" : "string",
-            "example" : "pending"
-          },
-          "reports" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/reportResponse"
-            }
-          }
-        }
-      },
-      "orderRequest" : {
-        "type" : "object",
-        "properties" : {
-          "reports" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/reportRequest"
-            }
-          },
-          "callback" : {
-            "$ref" : "#/components/schemas/callbackRequest"
+            "example" : "1261947"
           }
         }
       },
@@ -1160,26 +1378,275 @@
           }
         }
       },
-      "ApiResponse" : {
+      "providerDetails" : {
+        "required" : [ "countryId", "name", "organisationIdTypes", "searchCriteria" ],
         "type" : "object",
         "properties" : {
-          "code" : {
+          "countryId" : {
+            "type" : "string",
+            "example" : "ESP"
+          },
+          "providerId" : {
+            "type" : "string",
+            "example" : "IBER"
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Iberinform"
+          },
+          "organisationIdTypes" : {
+            "$ref" : "#/components/schemas/organisationIdTypes"
+          },
+          "searchCriteria" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/criteriaSet"
+            }
+          },
+          "availableReports" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/availableReport"
+            }
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/linksList"
+          }
+        }
+      },
+      "registeredOffice" : {
+        "type" : "object",
+        "properties" : {
+          "registeredOfficeType" : {
+            "type" : "string",
+            "example" : "NREG"
+          },
+          "registeredOfficeCode" : {
+            "type" : "string",
+            "example" : "B92566553"
+          }
+        }
+      },
+      "registeredOfficesList" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/registeredOffice"
+        }
+      },
+      "report" : {
+        "type" : "object",
+        "properties" : {
+          "providerId" : {
+            "type" : "string"
+          },
+          "lang" : {
+            "$ref" : "#/components/schemas/lang"
+          },
+          "requestId" : {
+            "type" : "string"
+          },
+          "orgIdent" : {
+            "$ref" : "#/components/schemas/orgIdent"
+          },
+          "reportId" : {
+            "type" : "string"
+          },
+          "reportTypeId" : {
+            "type" : "string"
+          },
+          "reportContent" : {
+            "$ref" : "#/components/schemas/reportContent"
+          }
+        }
+      },
+      "reportContent" : {
+        "type" : "object",
+        "properties" : {
+          "reportDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "status" : {
+            "type" : "string"
+          },
+          "identifyingData" : {
+            "$ref" : "#/components/schemas/identifyingData"
+          },
+          "aditionalCompanyData" : {
+            "$ref" : "#/components/schemas/aditionalCompanyData"
+          },
+          "evaluationData" : {
+            "$ref" : "#/components/schemas/evaluationData"
+          },
+          "financialStatementsData" : {
+            "$ref" : "#/components/schemas/financialStatementsData"
+          },
+          "incidentsData" : {
+            "$ref" : "#/components/schemas/incidentsData"
+          },
+          "officialRegistrationData" : {
+            "$ref" : "#/components/schemas/officialRegistrationData"
+          },
+          "corporateBodiesData" : {
+            "$ref" : "#/components/schemas/corporateBodiesData"
+          },
+          "financialConnectionsData" : {
+            "$ref" : "#/components/schemas/financialConnectionsData"
+          },
+          "clientsProvidersData" : {
+            "$ref" : "#/components/schemas/clientsProvidersData"
+          },
+          "financialRatiosData" : {
+            "$ref" : "#/components/schemas/financialRatiosData"
+          },
+          "financialBalanceSheets" : {
+            "$ref" : "#/components/schemas/financialBalanceSheets"
+          },
+          "trademarksData" : {
+            "$ref" : "#/components/schemas/trademarksData"
+          }
+        }
+      },
+      "reportDetails" : {
+        "type" : "object",
+        "properties" : {
+          "orderId" : {
+            "type" : "string",
+            "example" : "uuid"
+          },
+          "countryId" : {
+            "type" : "string",
+            "example" : "ESP"
+          },
+          "providerId" : {
+            "type" : "string",
+            "example" : "IBER"
+          },
+          "organisationIdType" : {
+            "type" : "string",
+            "example" : "IBER"
+          },
+          "organisationId" : {
+            "type" : "string",
+            "example" : "12345678"
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "pending"
+          },
+          "link" : {
+            "$ref" : "#/components/schemas/link"
+          }
+        }
+      },
+      "reportRequest" : {
+        "type" : "object",
+        "properties" : {
+          "countryId" : {
+            "type" : "string",
+            "example" : "ESP"
+          },
+          "providerId" : {
+            "type" : "string",
+            "example" : "IBER"
+          },
+          "organisationIdType" : {
+            "type" : "string",
+            "example" : "IBER"
+          },
+          "organisationId" : {
+            "type" : "string",
+            "example" : "1261947"
+          },
+          "reportId" : {
+            "type" : "string",
+            "example" : "IBERPLUS"
+          }
+        }
+      },
+      "reportsList" : {
+        "type" : "object",
+        "properties" : {
+          "totalRecords" : {
             "type" : "integer",
             "format" : "int32"
           },
-          "type" : {
+          "reports" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/reportDetails"
+            }
+          }
+        }
+      },
+      "statement" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
             "type" : "string"
           },
-          "message" : {
+          "amount" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "trademarksData" : {
+        "type" : "object"
+      },
+      "inline_response_200" : {
+        "type" : "object",
+        "properties" : {
+          "providers" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/provider"
+            }
+          },
+          "links" : {
+            "$ref" : "#/components/schemas/linksList"
+          }
+        }
+      },
+      "loginResponse_message" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string"
+          },
+          "description" : {
             "type" : "string"
           }
         }
       },
-      "idTypes_inner" : {
+      "loginResponse_userInfo" : {
+        "type" : "object",
         "properties" : {
-          "idType" : {
+          "email" : {
+            "type" : "string"
+          },
+          "activationDate" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "roles" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      },
+      "organisationIdTypes_inner" : {
+        "properties" : {
+          "organisationIdType" : {
             "type" : "string",
-            "example" : "CSAF"
+            "example" : "IBER"
           }
         }
       }
