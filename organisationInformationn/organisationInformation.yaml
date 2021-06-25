@@ -98,24 +98,59 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/countriesList"
                 },
-                "example" : "{   \"countries\": [     {       \"id\": \"ESP\",       \"name\": \"Spain\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/ESP\"         }, \t\t{           \"rel\": \"parent\",           \"href\": \"https://api.hostdomain.com/v1/countries\"         }, \t\t{ \t\t  \"rel\": \"providers\", \t\t  \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\" \t\t}       ]     }, \t{       \"id\": \"PER\",       \"name\": \"Peru\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/PER\"         }, \t\t{           \"rel\": \"parent\",           \"href\": \"https://api.hostdomain.com/v1/countries\"         }, \t\t{ \t\t  \"rel\": \"providers\", \t\t  \"href\": \"https://api.hostdomain.com/v1/countries/PER/providers\" \t\t}       ]     }   ] }"
+                "example" : "{   \"countries\": [     {       \"id\": \"ESP\",       \"name\": \"Spain\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/ESP\"         },     {           \"rel\": \"parent\",           \"href\": \"https://api.hostdomain.com/v1/countries\"         },     {       \"rel\": \"providers\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\"     }       ]     },   {       \"id\": \"PER\",       \"name\": \"Peru\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/PER\"         },     {           \"rel\": \"parent\",           \"href\": \"https://api.hostdomain.com/v1/countries\"         },     {       \"rel\": \"providers\",       \"href\": \"https://api.hostdomain.com/v1/countries/PER/providers\"     }       ]     }   ] }"
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -158,24 +193,59 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/country"
                 },
-                "example" : "{   \"id\": \"ESP\",   \"name\": \"Spain\",   \"links\": [ \t{ \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/countries/ESP\" \t}, \t{ \t  \"rel\": \"parent\", \t  \"href\": \"https://api.hostdomain.com/v1/countries\" \t}, \t{ \t  \"rel\": \"providers\", \t  \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\" \t}   ]     }"
+                "example" : "{   \"id\": \"ESP\",   \"name\": \"Spain\",   \"links\": [   {     \"rel\": \"self\",     \"href\": \"https://api.hostdomain.com/v1/countries/ESP\"   },   {     \"rel\": \"parent\",     \"href\": \"https://api.hostdomain.com/v1/countries\"   },   {     \"rel\": \"providers\",     \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\"   }   ]     }"
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -218,24 +288,59 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/inline_response_200"
                 },
-                "example" : "{   \"providers\": [     {       \"providerId\": \"IBER\",       \"countryId\": \"ESP\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers/IBER\"         }       ]     }   ],   \"links\": [     {       \"rel\": \"self\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\"     }, \t{       \"rel\": \"parent\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP\"     }   ] } "
+                "example" : "{   \"providers\": [     {       \"providerId\": \"IBER\",       \"countryId\": \"ESP\",       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers/IBER\"         }       ]     }   ],   \"links\": [     {       \"rel\": \"self\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\"     },   {       \"rel\": \"parent\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP\"     }   ] } "
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -287,25 +392,59 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/providerDetails"
-                },
-                "example" : "{   \"countryId\": \"ESP\",   \"providerId\": \"IBER\",   \"name\": \"Iberinform\",   \"organisationIdTypes\": [     {       \"organisationIdType\": \"IBER\"     }   ],   \"searchCriteria\": [     {       \"paramName\": \"name\",       \"optional\": false,       \"minLength\": 2,       \"allowedValues\": [         \"MatchBeginning\",\"ClosestKeywords\",\"ExactValue\"       ]     }, \t{ \t  \"paramName\": \"regOffice\",       \"optional\": true,       \"validationRegExp\": \"[A-Z][0-9]{8}|[0-9]{8}[A-Z]|[A-Z][0-9]{7}[A-Z]\" \t}, \t{ \t  \"paramName\": \"regOfficeType\",       \"optional\": true,       \"allowedValues\": [         \"NREG\"       ] \t}   ],   \"availableReports\": [     {       \"reportID\": 1,       \"name\": \"IBERPLUS\",       \"description\": \"Informe Iberplus\"     }, \t{       \"reportID\": 2,       \"name\": \"INVESTIGADO\",       \"description\": \"Informe Investigado\"     }   ],   \"links\": [     {       \"rel\": \"self\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers/IBER\"     } , \t{       \"rel\": \"parent\",       \"href\": \"https://api.hostdomain.com/v1/countries/ESP/providers\"     }   ] }"
+                }
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -417,25 +556,59 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/organisationsList"
-                },
-                "example" : "{   \"totalRecords\": 1,   \"organisations\": [     {       \"providerId\": \"IBER\",       \"orgIdent\": {         \"organisationIdType\": \"IBER\",         \"organisationId\": \"1261947\"       },       \"name\": \"Atradius Credito y Caucion\",       \"registeredOfficesList\": [         {           \"registeredOfficeType\": \"NREG\",           \"registeredOfficeCode\": \"B92566553\"         }       ],       \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/organisations/1261947?countryId=ESP&organisationIdType=IBER\"         }       ]     }   ] }"
+                }
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -450,6 +623,16 @@
         "description" : "Returns a single organisation",
         "operationId" : "getOrganisationById",
         "parameters" : [ {
+          "name" : "organisationId",
+          "in" : "path",
+          "description" : "Id of organisation",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "name" : "countryId",
           "in" : "query",
           "description" : "Id of country",
@@ -460,12 +643,12 @@
             "type" : "string"
           }
         }, {
-          "name" : "organisationId",
-          "in" : "path",
-          "description" : "Id of organisation",
+          "name" : "providerId",
+          "in" : "query",
+          "description" : "providerId for search organisations",
           "required" : true,
-          "style" : "simple",
-          "explode" : false,
+          "style" : "form",
+          "explode" : true,
           "schema" : {
             "type" : "string"
           }
@@ -497,25 +680,59 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/organisationDetails"
-                },
-                "example" : "{   \"orgIdent\": {     \"organisationIdType\": \"IBER\",     \"organisationId\": \"1261947\"   },   \"name\": \"Atradius Credito y Caucion\",   \"address\": {     \"addressType\": \"Paseo\",     \"street\": \"Paseo Castellana 4\",     \"city\": \"Madrid\",     \"postCode\": \"28026\",     \"countrySubident\": [       \"MB\"     ],     \"country\": \"ESP\"   },   \"registeredOfficesList\": [     {       \"registeredOfficeType\": \"NREG\",       \"registeredOfficeCode\": \"B92566553\"     }   ],   \"providerId\": \"string\",   \"links\": [         {           \"rel\": \"self\",           \"href\": \"https://api.hostdomain.com/v1/organisations/1261947?countryId=ESP&organisationIdType=IBER\"         }       ] }"
+                }
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -533,6 +750,16 @@
           "name" : "status",
           "in" : "query",
           "description" : "status of the order to search",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "organisationId",
+          "in" : "query",
+          "description" : "organisation ID to search",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -568,24 +795,59 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/ordersList"
                 },
-                "example" : "{   \"totalRecords\": 1,   \"orders\": [   {   \"id\": \"uuid\",   \"status\": \"pending\",   \"reports\": [   { \t\"orderId\": \"uuid\", \t\"countryId\": \"ESP\", \t\"providerId\": \"IBER\", \t\"organisationIdType\": \"1261947\", \t\"organisationId\": \"IBER\", \t\"status\": \"pending\", \t\"link\": { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/reports/uuid\" \t}   }   ],   \"links\": [     { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/orders/uuid\"     }     ]   } ] }"
+                "example" : "{   \"totalRecords\": 1,   \"orders\": [   {   \"id\": \"uuid\",   \"status\": \"pending\",   \"reports\": [   {   \"orderId\": \"uuid\",   \"countryId\": \"ESP\",   \"providerId\": \"IBER\",   \"organisationIdType\": \"1261947\",   \"organisationId\": \"IBER\",   \"status\": \"pending\",   \"link\": {     \"rel\": \"self\",     \"href\": \"https://api.hostdomain.com/v1/reports/uuid\"   }   }   ],   \"links\": [     {     \"rel\": \"self\",     \"href\": \"https://api.hostdomain.com/v1/orders/uuid\"     }     ]   } ] }"
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -602,8 +864,7 @@
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/orderRequest"
-              },
-              "example" : "{   \"reports\": [     {       \"countryId\": \"ESP\",       \"providerId\": \"IBER\",       \"organisationIdType\": \"IBER\",       \"organisationId\": \"1261947\",       \"reportTypeId\": \"IBERPLUS\"     }   ],   \"callback\": {     \"data\": \"string\",     \"type\": \"string\"   } }"
+              }
             }
           },
           "required" : true
@@ -616,24 +877,59 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/orderDetails"
                 },
-                "example" : "{ \"id\": \"uuid\", \"status\": \"pending\", \"reports\": [   { \t\"orderId\": \"uuid\", \t\"countryId\": \"ESP\", \t\"providerId\": \"IBER\", \t\"organisationIdType\": \"1261947\", \t\"organisationId\": \"IBER\", \t\"status\": \"pending\", \t\"link\": { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/reports/uuid\" \t}   } ], \"links\": [   { \t\"rel\": \"self\", \t\"href\": \"https://api.hostdomain.com/v1/orders/uuid\"   } ] }"
+                "example" : "{ \"id\": \"uuid\", \"status\": \"pending\", \"reports\": [   {   \"reportId\": \"uuid\",   \"countryId\": \"ESP\",   \"providerId\": \"IBER\",   \"organisationIdType\": \"1261947\",   \"organisationId\": \"IBER\",   \"status\": \"pending\",   \"link\": {     \"rel\": \"self\",     \"href\": \"https://api.hostdomain.com/v1/reports/uuid\"   }   } ], \"links\": [   {   \"rel\": \"self\",   \"href\": \"https://api.hostdomain.com/v1/orders/uuid\"   } ] }"
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -656,16 +952,6 @@
           "schema" : {
             "type" : "string"
           }
-        }, {
-          "name" : "lang",
-          "in" : "query",
-          "description" : "language",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "$ref" : "#/components/schemas/lang"
-          }
         } ],
         "responses" : {
           "200" : {
@@ -675,24 +961,59 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/orderDetails"
                 },
-                "example" : "{   \"id\": \"uuid\",   \"status\": \"pending\",   \"reports\": [   { \t\"orderId\": \"uuid\", \t\"countryId\": \"ESP\", \t\"providerId\": \"IBER\", \t\"organisationIdType\": \"1261947\", \t\"organisationId\": \"IBER\", \t\"status\": \"pending\", \t\"link\": { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/reports/uuid\" \t}   }   ],   \"links\": [     { \t  \"rel\": \"self\", \t  \"href\": \"https://api.hostdomain.com/v1/orders/uuid\"     }     ]   }"
+                "example" : "{   \"id\": \"uuid\",   \"status\": \"pending\",   \"reports\": [   {   \"orderId\": \"uuid\",   \"countryId\": \"ESP\",   \"providerId\": \"IBER\",   \"organisationIdType\": \"1261947\",   \"organisationId\": \"IBER\",   \"status\": \"pending\",   \"link\": {     \"rel\": \"self\",     \"href\": \"https://api.hostdomain.com/v1/reports/uuid\"   }   }   ],   \"links\": [     {     \"rel\": \"self\",     \"href\": \"https://api.hostdomain.com/v1/orders/uuid\"     }     ]   }"
               }
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -710,6 +1031,16 @@
           "name" : "orderId",
           "in" : "query",
           "description" : "Id of order",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "organisationId",
+          "in" : "query",
+          "description" : "organisation ID to search",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -769,19 +1100,54 @@
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -805,6 +1171,16 @@
           "schema" : {
             "type" : "string"
           }
+        }, {
+          "name" : "format",
+          "in" : "query",
+          "description" : "format of report",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -818,19 +1194,54 @@
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -866,19 +1277,54 @@
             }
           },
           "400" : {
-            "description" : "bad request"
+            "description" : "bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "authentication failed"
+            "description" : "authentication failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "forbidden"
+            "description" : "forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "not found"
+            "description" : "not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           },
           "500" : {
-            "description" : "internal server error"
+            "description" : "internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/errorDetail"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -912,7 +1358,7 @@
           },
           "street" : {
             "type" : "string",
-            "example" : "Paseo Castellana 4"
+            "example" : "Castellana 4"
           },
           "city" : {
             "type" : "string",
@@ -967,10 +1413,9 @@
       "availableReport" : {
         "type" : "object",
         "properties" : {
-          "reportID" : {
-            "type" : "integer",
-            "format" : "int32",
-            "example" : 1
+          "reportTypeId" : {
+            "type" : "string",
+            "example" : "IPLUS"
           },
           "name" : {
             "type" : "string",
@@ -1070,6 +1515,28 @@
             "items" : {
               "$ref" : "#/components/schemas/employeesFinancialYearData"
             }
+          }
+        }
+      },
+      "errorDetail" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string",
+            "example" : "401"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "unauthorized"
+          },
+          "principal" : {
+            "type" : "string",
+            "example" : "unauthorized"
+          },
+          "status" : {
+            "type" : "integer",
+            "format" : "int32",
+            "example" : 401
           }
         }
       },
@@ -1299,6 +1766,9 @@
           "registeredOfficesList" : {
             "$ref" : "#/components/schemas/registeredOfficesList"
           },
+          "address" : {
+            "$ref" : "#/components/schemas/address"
+          },
           "links" : {
             "$ref" : "#/components/schemas/linksList"
           }
@@ -1314,6 +1784,10 @@
             "type" : "string",
             "example" : "Atradius Credito y Caucion"
           },
+          "ceo" : {
+            "type" : "string",
+            "example" : "CEO NAME"
+          },
           "address" : {
             "$ref" : "#/components/schemas/address"
           },
@@ -1323,15 +1797,15 @@
           "providerId" : {
             "type" : "string"
           },
+          "availableReports" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/availableReport"
+            }
+          },
           "links" : {
             "$ref" : "#/components/schemas/linksList"
           }
-        }
-      },
-      "organisationIdTypes" : {
-        "type" : "array",
-        "items" : {
-          "$ref" : "#/components/schemas/organisationIdTypes_inner"
         }
       },
       "organisationsList" : {
@@ -1379,7 +1853,7 @@
         }
       },
       "providerDetails" : {
-        "required" : [ "countryId", "name", "organisationIdTypes", "searchCriteria" ],
+        "required" : [ "countryId", "name", "searchCriteria" ],
         "type" : "object",
         "properties" : {
           "countryId" : {
@@ -1393,9 +1867,6 @@
           "name" : {
             "type" : "string",
             "example" : "Iberinform"
-          },
-          "organisationIdTypes" : {
-            "$ref" : "#/components/schemas/organisationIdTypes"
           },
           "searchCriteria" : {
             "type" : "array",
@@ -1510,7 +1981,7 @@
       "reportDetails" : {
         "type" : "object",
         "properties" : {
-          "orderId" : {
+          "reportId" : {
             "type" : "string",
             "example" : "uuid"
           },
@@ -1533,6 +2004,13 @@
           "status" : {
             "type" : "string",
             "example" : "pending"
+          },
+          "contentType" : {
+            "type" : "array",
+            "example" : "[\"application/pdf\", \"application/json\"]",
+            "items" : {
+              "type" : "string"
+            }
           },
           "link" : {
             "$ref" : "#/components/schemas/link"
@@ -1558,9 +2036,49 @@
             "type" : "string",
             "example" : "1261947"
           },
-          "reportId" : {
+          "speed" : {
             "type" : "string",
-            "example" : "IBERPLUS"
+            "example" : "fast"
+          },
+          "reportTypeId" : {
+            "type" : "string",
+            "example" : "IPLUS"
+          },
+          "companyName" : {
+            "type" : "string",
+            "example" : "Atradius"
+          },
+          "registeredCompanyName" : {
+            "type" : "string",
+            "example" : "Atradius"
+          },
+          "phone" : {
+            "type" : "string",
+            "example" : "(+34) 919919919"
+          },
+          "fax" : {
+            "type" : "string",
+            "example" : "(+34) 919919919"
+          },
+          "website" : {
+            "type" : "string",
+            "example" : "www.atradius.com"
+          },
+          "email" : {
+            "type" : "string",
+            "example" : "atradius@atradius.com"
+          },
+          "ceo" : {
+            "type" : "string",
+            "example" : "NAME CEO"
+          },
+          "operatingAddress" : {
+            "type" : "string",
+            "example" : "Paseo Castellana 4"
+          },
+          "registeredAddress" : {
+            "type" : "string",
+            "example" : "Paseo Castellana 4"
           }
         }
       },
@@ -1639,14 +2157,6 @@
           },
           "type" : {
             "type" : "string"
-          }
-        }
-      },
-      "organisationIdTypes_inner" : {
-        "properties" : {
-          "organisationIdType" : {
-            "type" : "string",
-            "example" : "IBER"
           }
         }
       }
